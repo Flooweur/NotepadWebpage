@@ -3,6 +3,33 @@
 // Windows XP Click Sound - Audio context for click sound
 let audioContext = null;
 
+// Background Music Player
+let isPlaying = false;
+
+/**
+ * Toggle background music play/pause
+ */
+function toggleMusic() {
+    const audio = document.getElementById('background-music');
+    const button = document.getElementById('music-toggle');
+    const icon = button.querySelector('.play-icon');
+    
+    if (isPlaying) {
+        audio.pause();
+        icon.textContent = '▶';
+        button.classList.remove('playing');
+        button.title = 'Play Music';
+    } else {
+        audio.play().catch(e => {
+            console.log('Audio playback failed:', e);
+        });
+        icon.textContent = '❚❚';
+        button.classList.add('playing');
+        button.title = 'Pause Music';
+    }
+    isPlaying = !isPlaying;
+}
+
 /**
  * Joue un son de clic style Windows XP
  */
