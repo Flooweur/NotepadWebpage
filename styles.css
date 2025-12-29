@@ -377,10 +377,39 @@ body {
 .fullscreen-content ol {
     margin-left: 20px;
     margin-bottom: 8px;
+    white-space: normal;
+    list-style-position: outside;
+}
+
+.fullscreen-content ul {
+    list-style-type: disc;
+}
+
+.fullscreen-content ul ul {
+    list-style-type: circle;
+    margin-top: 4px;
 }
 
 .fullscreen-content li {
     margin-bottom: 4px;
+    display: list-item;
+}
+
+/* Theme list specific styling */
+.fullscreen-content .theme-list {
+    margin-top: 12px;
+    margin-left: 30px;
+}
+
+.fullscreen-content .theme-list > li {
+    margin-bottom: 12px;
+}
+
+.fullscreen-content .theme-list ul {
+    margin-top: 8px;
+    margin-left: 25px;
+    font-style: italic;
+    color: #444;
 }
 
 /* Scrollbar - Windows XP Style */
@@ -487,4 +516,77 @@ body {
 
 .annex-content::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(to right, #f0e8d8 0%, #e0d8c8 50%, #d0c8b8 100%);
+}
+
+/* Windows XP Music Button */
+.xp-music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    
+    /* Windows XP button style */
+    background: linear-gradient(to bottom, 
+        #ffffff 0%, 
+        #ecebe5 8%, 
+        #d8d7cf 92%, 
+        #c8c7c0 100%
+    );
+    border: 1px solid;
+    border-color: #fff #848484 #848484 #fff;
+    box-shadow: 
+        1px 1px 0 #404040,
+        inset 1px 1px 0 rgba(255,255,255,0.8);
+    
+    transition: all 0.1s ease;
+}
+
+.xp-music-btn:hover {
+    background: linear-gradient(to bottom, 
+        #ffffff 0%, 
+        #e3f1fc 8%, 
+        #c8dff5 92%, 
+        #98c8ed 100%
+    );
+    border-color: #316ac5;
+}
+
+.xp-music-btn:active {
+    background: linear-gradient(to bottom, 
+        #98c8ed 0%, 
+        #c8dff5 8%, 
+        #e3f1fc 92%, 
+        #ffffff 100%
+    );
+    border-color: #848484 #fff #fff #848484;
+    box-shadow: 
+        inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.xp-music-btn .play-icon {
+    color: #006400;
+    font-size: 16px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.xp-music-btn.playing .play-icon {
+    color: #8B0000;
+}
+
+.xp-music-btn.playing {
+    background: linear-gradient(to bottom, 
+        #ffffff 0%, 
+        #d5f0d5 8%, 
+        #b0e0b0 92%, 
+        #80c080 100%
+    );
 }
