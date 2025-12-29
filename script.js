@@ -1,5 +1,64 @@
 // Fonctionnalité de bloc-notes en plein écran
 
+// Windows XP Click Sound - Audio context for click sound
+let audioContext = null;
+
+/**
+ * Joue un son de clic style Windows XP
+ */
+function playClickSound() {
+    try {
+        // Créer le contexte audio si nécessaire
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        // Reprendre le contexte si suspendu (politique autoplay des navigateurs)
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+        
+        // Créer un oscillateur pour un son de clic court et net
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Configuration du son de clic Windows XP
+        oscillator.frequency.setValueAtTime(1800, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.02);
+        oscillator.type = 'square';
+        
+        // Volume et enveloppe
+        gainNode.gain.setValueAtTime(0.08, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+        
+        // Jouer le son
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.05);
+    } catch (e) {
+        // Ignorer les erreurs audio silencieusement
+        console.log('Audio non supporté');
+    }
+}
+
+// Ajouter le son de clic sur tous les éléments cliquables
+document.addEventListener('click', function(event) {
+    // Vérifier si l'élément cliqué est interactif
+    const target = event.target;
+    const isClickable = 
+        target.tagName === 'BUTTON' ||
+        target.classList.contains('notepad') ||
+        target.classList.contains('annex-btn') ||
+        target.closest('.notepad') ||
+        target.closest('button');
+    
+    if (isClickable) {
+        playClickSound();
+    }
+});
+
 /**
  * Ouvre un bloc-notes en mode plein écran
  * @param {HTMLElement} notepadElement - L'élément bloc-notes cliqué
@@ -13,12 +72,13 @@ function openNotepad(notepadElement) {
     // Récupérer le titre du bloc-notes cliqué
     const title = notepadElement.querySelector('.notepad-title').textContent;
     
-    // Récupérer le texte complet du bloc-notes cliqué
-    const fullText = notepadElement.querySelector('.full-text').textContent;
+    // Récupérer le contenu HTML complet du bloc-notes cliqué (pour le formatage)
+    const fullTextElement = notepadElement.querySelector('.full-text');
+    const fullTextHTML = fullTextElement.innerHTML;
     
-    // Définir le contenu en plein écran
+    // Définir le contenu en plein écran avec formatage HTML
     titleElement.textContent = title;
-    contentElement.textContent = fullText;
+    contentElement.innerHTML = fullTextHTML;
     
     // Générer les boutons d'annexes
     generateAnnexButtons(notepadElement, menuElement);
