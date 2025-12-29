@@ -316,6 +316,73 @@ body {
     white-space: pre-wrap;
 }
 
+/* Rich Text Formatting Styles */
+.fullscreen-content strong,
+.fullscreen-content b {
+    font-weight: bold;
+    color: #000080;
+}
+
+.fullscreen-content em,
+.fullscreen-content i {
+    font-style: italic;
+}
+
+.fullscreen-content u {
+    text-decoration: underline;
+}
+
+.fullscreen-content s,
+.fullscreen-content strike {
+    text-decoration: line-through;
+}
+
+.fullscreen-content mark {
+    background-color: #ffff00;
+    padding: 0 2px;
+}
+
+.fullscreen-content code {
+    background-color: #f0f0f0;
+    padding: 1px 4px;
+    border: 1px solid #ccc;
+    font-family: 'Lucida Console', 'Courier New', monospace;
+}
+
+.fullscreen-content blockquote {
+    border-left: 3px solid #0054e3;
+    margin: 8px 0;
+    padding-left: 12px;
+    color: #444;
+    font-style: italic;
+}
+
+.fullscreen-content h1,
+.fullscreen-content h2,
+.fullscreen-content h3 {
+    color: #0054e3;
+    margin: 12px 0 8px 0;
+}
+
+.fullscreen-content a {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.fullscreen-content a:hover {
+    color: #0044aa;
+}
+
+.fullscreen-content ul,
+.fullscreen-content ol {
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+.fullscreen-content li {
+    margin-bottom: 4px;
+}
+
 /* Scrollbar - Windows XP Style */
 .fullscreen-content::-webkit-scrollbar {
     width: 17px;
