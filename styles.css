@@ -7,7 +7,8 @@
 
 body {
     font-family: 'Tahoma', 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #245edb 0%, #3a8bc2 50%, #245edb 100%);
+    background: url('media/Bliss.png') no-repeat center center fixed;
+    background-size: cover;
     min-height: 100vh;
     padding-bottom: 40px;
 }
@@ -95,14 +96,30 @@ body {
     gap: 6px;
 }
 
+/* Notepad icon - looks like a small notepad with lines */
 .notepad-title::before {
     content: '';
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: linear-gradient(135deg, #ffffcc 0%, #ffffaa 50%, #ffff88 100%);
-    border: 1px solid #999;
-    border-radius: 2px;
+    background: 
+        /* Paper lines */
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            #8ab4f8 3px,
+            #8ab4f8 4px
+        ),
+        /* Paper background */
+        linear-gradient(to bottom, #ffffff 0%, #f0f4ff 100%);
+    border: 1px solid #4a7ab8;
+    border-radius: 1px;
+    box-shadow: 
+        inset 1px 1px 0 rgba(255,255,255,0.8),
+        1px 1px 2px rgba(0,0,0,0.3);
+    /* Blue binding on left edge */
+    border-left: 3px solid #2060a8;
 }
 
 /* Window Control Buttons */
