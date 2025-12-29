@@ -1,58 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Notepads</title>
+    <title>Mes Bloc-notes</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Barre de navigation -->
     <nav class="navbar">
-        <div class="navbar-title">My Notepads</div>
+        <div class="navbar-title">Mes Bloc-notes</div>
     </nav>
 
-    <!-- Main Content - Notepad Grid -->
+    <!-- Contenu principal - Grille de bloc-notes -->
     <main class="notepad-grid">
-        <!-- Notepad 1 -->
-        <div class="notepad" onclick="openNotepad(this)">
+        <!-- Bloc-notes 1 - Exemple avec 2 annexes -->
+        <div class="notepad" 
+             data-annexes='[{"name": "Annexe 1", "path": "media/Bliss.png"}, {"name": "Annexe 2", "path": "media/Bliss.png"}]'
+             onclick="openNotepad(this)">
             <div class="notepad-titlebar">
-                <span class="notepad-title">TODO - Note 1</span>
-            </div>
-            <div class="notepad-menu">
-                <span>File</span>
-                <span>Edit</span>
-                <span>Format</span>
-                <span>View</span>
-                <span>Help</span>
+                <span class="notepad-title">À FAIRE - Note 1</span>
             </div>
             <div class="notepad-content">
-                <p class="preview-text">TODO: This is the preview text for the first notepad. Click to read more...</p>
-                <p class="full-text" style="display: none;">TODO: This is the full text for the first notepad. 
+                <p class="preview-text">À FAIRE: Ceci est l'aperçu du premier bloc-notes. Cliquez pour lire la suite...</p>
+                <p class="full-text" style="display: none;">À FAIRE: Ceci est le texte complet du premier bloc-notes. 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-This notepad contains important information that you can scroll through when viewing in fullscreen mode.</p>
+Ce bloc-notes contient des informations importantes que vous pouvez faire défiler en mode plein écran.</p>
             </div>
         </div>
 
-        <!-- Notepad 2 -->
+        <!-- Bloc-notes 2 - Sans annexe -->
         <div class="notepad" onclick="openNotepad(this)">
             <div class="notepad-titlebar">
-                <span class="notepad-title">TODO - Note 2</span>
-            </div>
-            <div class="notepad-menu">
-                <span>File</span>
-                <span>Edit</span>
-                <span>Format</span>
-                <span>View</span>
-                <span>Help</span>
+                <span class="notepad-title">À FAIRE - Note 2</span>
             </div>
             <div class="notepad-content">
-                <p class="preview-text">TODO: This is the preview text for the second notepad. Click to read more...</p>
-                <p class="full-text" style="display: none;">TODO: This is the full text for the second notepad.
+                <p class="preview-text">À FAIRE: Ceci est l'aperçu du deuxième bloc-notes. Cliquez pour lire la suite...</p>
+                <p class="full-text" style="display: none;">À FAIRE: Ceci est le texte complet du deuxième bloc-notes.
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
@@ -62,21 +50,16 @@ Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, ad
             </div>
         </div>
 
-        <!-- Notepad 3 -->
-        <div class="notepad" onclick="openNotepad(this)">
+        <!-- Bloc-notes 3 - Exemple avec 1 annexe -->
+        <div class="notepad" 
+             data-annexes='[{"name": "Document", "path": "media/Bliss.png"}]'
+             onclick="openNotepad(this)">
             <div class="notepad-titlebar">
-                <span class="notepad-title">TODO - Note 3</span>
-            </div>
-            <div class="notepad-menu">
-                <span>File</span>
-                <span>Edit</span>
-                <span>Format</span>
-                <span>View</span>
-                <span>Help</span>
+                <span class="notepad-title">À FAIRE - Note 3</span>
             </div>
             <div class="notepad-content">
-                <p class="preview-text">TODO: This is the preview text for the third notepad. Click to read more...</p>
-                <p class="full-text" style="display: none;">TODO: This is the full text for the third notepad.
+                <p class="preview-text">À FAIRE: Ceci est l'aperçu du troisième bloc-notes. Cliquez pour lire la suite...</p>
+                <p class="full-text" style="display: none;">À FAIRE: Ceci est le texte complet du troisième bloc-notes.
 
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
 
@@ -88,31 +71,38 @@ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
 
         <!-- 
         =====================================================
-        TO ADD A NEW NOTEPAD, COPY THE TEMPLATE BELOW:
+        POUR AJOUTER UN NOUVEAU BLOC-NOTES, COPIEZ LE MODÈLE CI-DESSOUS :
         =====================================================
         
-        <div class="notepad" onclick="openNotepad(this)">
+        <div class="notepad" 
+             data-annexes='[{"name": "Nom du bouton", "path": "chemin/vers/image.png"}]'
+             onclick="openNotepad(this)">
             <div class="notepad-titlebar">
-                <span class="notepad-title">YOUR TITLE HERE</span>
-            </div>
-            <div class="notepad-menu">
-                <span>File</span>
-                <span>Edit</span>
-                <span>Format</span>
-                <span>View</span>
-                <span>Help</span>
+                <span class="notepad-title">VOTRE TITRE ICI</span>
             </div>
             <div class="notepad-content">
-                <p class="preview-text">YOUR PREVIEW TEXT HERE...</p>
-                <p class="full-text" style="display: none;">YOUR FULL TEXT HERE...</p>
+                <p class="preview-text">VOTRE TEXTE D'APERÇU ICI...</p>
+                <p class="full-text" style="display: none;">VOTRE TEXTE COMPLET ICI...</p>
             </div>
         </div>
-        
+
+        =====================================================
+        CONFIGURATION DES ANNEXES (data-annexes) :
+        - Format: JSON array avec objets {"name": "...", "path": "..."}
+        - name: Le texte affiché sur le bouton
+        - path: Le chemin vers l'image de l'annexe
+        - Exemple avec plusieurs annexes:
+          data-annexes='[
+            {"name": "Annexe 1", "path": "media/doc1.png"},
+            {"name": "Annexe 2", "path": "media/doc2.jpg"},
+            {"name": "Annexe 3", "path": "media/doc3.gif"}
+          ]'
+        - Si pas d'annexes, omettez simplement l'attribut data-annexes
         =====================================================
         -->
     </main>
 
-    <!-- Fullscreen Overlay -->
+    <!-- Superposition plein écran -->
     <div id="fullscreen-overlay" class="fullscreen-overlay">
         <div class="fullscreen-notepad">
             <div class="notepad-titlebar">
@@ -121,14 +111,25 @@ Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
                     <button class="btn-close-red" onclick="closeNotepad(event)">×</button>
                 </div>
             </div>
-            <div class="notepad-menu">
-                <span>File</span>
-                <span>Edit</span>
-                <span>Format</span>
-                <span>View</span>
-                <span>Help</span>
+            <div class="notepad-menu" id="fullscreen-menu">
+                <!-- Les boutons d'annexes seront ajoutés dynamiquement ici -->
             </div>
             <div class="fullscreen-content" id="fullscreen-content"></div>
+        </div>
+    </div>
+
+    <!-- Fenêtre d'annexe popup -->
+    <div id="annex-overlay" class="annex-overlay">
+        <div class="annex-window">
+            <div class="notepad-titlebar">
+                <span class="notepad-title" id="annex-title"></span>
+                <div class="titlebar-buttons">
+                    <button class="btn-close-red" onclick="closeAnnex(event)">×</button>
+                </div>
+            </div>
+            <div class="annex-content">
+                <img id="annex-image" src="" alt="Annexe">
+            </div>
         </div>
     </div>
 
