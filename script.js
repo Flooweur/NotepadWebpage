@@ -7,6 +7,29 @@ let audioContext = null;
 let isPlaying = false;
 
 /**
+ * Initialize background music to play on page load at 30% volume
+ */
+function initBackgroundMusic() {
+    const audio = document.getElementById('background-music');
+    const button = document.getElementById('music-toggle');
+    const icon = button.querySelector('.play-icon');
+    
+    // Set volume to 30%
+    audio.volume = 0.3;
+    
+    // Attempt to autoplay
+    audio.play().then(() => {
+        isPlaying = true;
+        icon.textContent = '❚❚';
+        button.classList.add('playing');
+        button.title = 'Pause Music';
+    }).catch(e => {
+        console.log('Autoplay blocked by browser:', e);
+        // Keep isPlaying false if autoplay fails
+    });
+}
+
+/**
  * Toggle background music play/pause
  */
 function toggleMusic() {
@@ -216,6 +239,8 @@ function closeNotepad(event) {
 
 // Fermer les superpositions en cliquant à l'extérieur
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize background music
+    initBackgroundMusic();
     const overlay = document.getElementById('fullscreen-overlay');
     const annexOverlay = document.getElementById('annex-overlay');
     
